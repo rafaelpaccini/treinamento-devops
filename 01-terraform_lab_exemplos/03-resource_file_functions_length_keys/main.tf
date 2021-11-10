@@ -1,6 +1,6 @@
 variable "arquivos" {
   default     = {
-    arquivo1 = "Primeiro item",
+    arquivo1 = "Primeiro item", 
     arquivo2 = "Segundo item",
     arquivo3 = <<EOF
 
@@ -13,7 +13,7 @@ EOF
 
 # Forma grande
 resource "local_file" "map_files" {
-  count = length(keys(var.arquivos))
+  count = length(keys(var.arquivos)) 
   filename = "${keys(var.arquivos)[count.index]}.txt"
   content = var.arquivos[keys(var.arquivos)[count.index]]
 }
