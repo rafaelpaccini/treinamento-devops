@@ -59,21 +59,21 @@ resource "aws_route_table" "rt-mamede-terraform-01" {
   vpc_id = aws_vpc.vpc-mamede-terraform-01.id
 
   route = [
-      {
-        carrier_gateway_id         = ""
-        cidr_block                 = "0.0.0.0/0"
-        destination_prefix_list_id = ""
-        egress_only_gateway_id     = ""
-        gateway_id                 = aws_internet_gateway.gtw-mamede-terraform-01.id
-        instance_id                = ""
-        ipv6_cidr_block            = ""
-        local_gateway_id           = ""
-        nat_gateway_id             = ""
-        network_interface_id       = ""
-        transit_gateway_id         = ""
-        vpc_endpoint_id            = ""
-        vpc_peering_connection_id  = ""
-      }
+    {
+      carrier_gateway_id         = ""
+      cidr_block                 = "0.0.0.0/0"
+      destination_prefix_list_id = ""
+      egress_only_gateway_id     = ""
+      gateway_id                 = aws_internet_gateway.gtw-mamede-terraform-01.id
+      instance_id                = ""
+      ipv6_cidr_block            = ""
+      local_gateway_id           = ""
+      nat_gateway_id             = ""
+      network_interface_id       = ""
+      transit_gateway_id         = ""
+      vpc_endpoint_id            = ""
+      vpc_peering_connection_id  = ""
+    }
   ]
 
   tags = {
@@ -86,7 +86,7 @@ resource "aws_route_table" "rt-mamede-terraform-02-private" {
   vpc_id = aws_vpc.vpc-mamede-terraform-01.id
 
   route = [
-      
+
   ]
   tags = {
     Name = "rt-mamede-terraform-02-private"

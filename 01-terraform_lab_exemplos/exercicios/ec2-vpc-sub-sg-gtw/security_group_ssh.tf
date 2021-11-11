@@ -1,7 +1,7 @@
 resource "aws_security_group" "sg-mamede-terraform-01" {
   name        = "secgrp-mamede-terraform-01"
   description = "Criado pelo terraform 01"
-  vpc_id = aws_vpc.vpc-mamede-terraform-01.id
+  vpc_id      = aws_vpc.vpc-mamede-terraform-01.id
   ingress = [
     {
       description      = "SSH from VPC"
@@ -10,11 +10,11 @@ resource "aws_security_group" "sg-mamede-terraform-01" {
       protocol         = "tcp"
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
-      prefix_list_ids = null,
-      security_groups = null,
-      self            = null
+      prefix_list_ids  = null,
+      security_groups  = null,
+      self             = null
     }
- 
+
   ]
 
   egress = [
