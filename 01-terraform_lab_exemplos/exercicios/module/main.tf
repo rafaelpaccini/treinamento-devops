@@ -4,9 +4,10 @@ provider "aws" {
 
 module "criar_instancia" {
   source = "./instancia"
-  nome = "Um nome"
+  nome = "ec2-mamede-terraform-module-01"
 }
 
 output "out" {
-  value = [module.criar_instancia.name] 
+  value = [module.criar_instancia.public_dns] 
+
 }
