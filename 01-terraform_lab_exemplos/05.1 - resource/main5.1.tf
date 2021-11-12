@@ -17,3 +17,4 @@ resource "aws_instance" "web" {
   }
 }
 
+#alteracao arquivo com ssh
