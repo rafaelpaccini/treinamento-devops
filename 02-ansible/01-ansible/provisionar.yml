@@ -1,5 +1,5 @@
 - hosts: all
-  handlers:
+  handlers:              # todos as ferramentas que são serviços (tipo Apache, Nginx)
     - name: "restart apache"
       service:
         name: apache2
@@ -52,7 +52,7 @@
       unarchive:
         src: "/tmp/wordpress.tar.gz"
         dest: "/var/www"
-        remote_src: yes
+        remote_src: yes           # remote para copiar do diretorio "src" da máquina que sera executado e não a local
 
     - name: "Copia arquivo WP"
       copy:

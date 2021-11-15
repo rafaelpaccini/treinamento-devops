@@ -17,4 +17,9 @@ resource "aws_instance" "web" {
   }
 }
 
-#alteracao arquivo com ssh
+output "instance_public" {
+  value = [
+            aws_instance.web.public_dns
+          ]
+  description = "Mostra os IPs publicos e privados da maquina criada."
+}
