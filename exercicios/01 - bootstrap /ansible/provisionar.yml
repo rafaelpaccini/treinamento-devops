@@ -1,0 +1,45 @@
+- hosts: all
+  handlers:
+    - name: "restart apache"
+      service:
+        name: apache2
+        state: restarted
+      become: yes
+  tasks:
+    # - name: "Criando um arquivo a toa no servidor"
+    #   shell: "echo 'escrevendo algo no servidor' >> teste.txt"
+    - name: "Roda: sudo apt update"
+      become: yes
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #Um dia
+
+    - name: "Instala pacotes"
+      apt:
+        name: "{{ item }}"
+        state: latest
+      become: yes # roda com sudo
+      with_items:
+        - apache2
+        - unzip
+
+    - name: "Fazendo downlaod do bootstrap"
+      get_url:
+        url: "https://github.com/startbootstrap/startbootstrap-sb-admin-2/archive/gh-pages.zip"
+        dest: "/tmp/bootstrap-pag01.zip"
+    
+    - name: "Fazendo descompactação dos arquivos"
+      unarchive:
+        src: "/tmp/bootstrap-pag01.zip"
+        dest: "/var/www"
+        remote_src: yes
+      become: yes
+
+    - name: "Trocando pasta do render do apache"
+      copy:
+        src: "apache/000-default.conf"
+        dest: "/etc/apache2/sites-available/000-default.conf"
+      become: yes
+      notify:
+        - "restart apache"
