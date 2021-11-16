@@ -1,6 +1,6 @@
 resource "aws_vpc" "vpc-exerc" {
   cidr_block = "10.0.0.0/16"
-
+  enable_dns_hostnames=true
   tags = {
     Name = "vpc-mamede-tf-bootstrap-01"
   }

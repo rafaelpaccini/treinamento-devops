@@ -23,5 +23,6 @@ pegar key e password no .aws/credentials do notebook
 ## clone projeto github
 git clone https://github.com/rafaelpaccini/treinamento-devops.git
 
-
+## scp da chave
+scp -r -i "/c/Users/rafae/aws/key01" '/c/Users/rafae/aws/key01' ubuntu@54.233.241.59:/home/ubuntu
 
