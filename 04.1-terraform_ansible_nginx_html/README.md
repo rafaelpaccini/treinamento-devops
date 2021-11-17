@@ -1,5 +1,5 @@
 # rodar playbook no ansible
-ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key ~/.ssh/terraform-aws
+ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key ~/aws/key01
 
 # acesso ssh maquina
-ssh -i ~/.ssh/terraform-aws ubuntu@ec2-54-234-131-240.compute-1.amazonaws.com 
+ssh -i ~/aws/key01 ubuntu@ec2-18-230-76-190.sa-east-1.compute.amazonaws.com
