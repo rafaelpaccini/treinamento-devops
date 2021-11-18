@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mamede-java-deployment
+spec:
+  template:
+    metadata:
+      name: mamede-java
+      labels:
+        app: mamede-java
+    spec:
+      containers:
+        - name: container-pod-java
+          image: rafaelmamede/validador-cpf-01
+          ports:
+            - containerPort: 8080
+
+          resources:
+            requests:
+              memory: "800Mi" # 512 MB
+              cpu: "1" # 0.5 milicors VCPU # este recurso tira do meu cluster este recurso #https://sysdig.com/blog/kubernetes-limits-requests/
+            limits: # caso a aplicação precise de mais recurso, ele coloca este limite automático
+              memory: "800Mi" # 512 MB
+              cpu: "1"
+
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mamede-java

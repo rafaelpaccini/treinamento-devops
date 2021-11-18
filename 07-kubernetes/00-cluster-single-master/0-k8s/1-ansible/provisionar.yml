@@ -76,11 +76,48 @@
 # kube-scheduler-k8s-master-0 # seus agendamentos
 # weave-net-4txql # sua gestão de rede
 # kubectl describe pod etcd-k8s-master-0 -n kube-system # mostra o describe do pod do system
-# kubectl run ngnix-treinamento --image nginx # vou criar um deployment do nginx
+# kubectl run mamede-nginx --image nginx # vou criar um deployment do nginx
 # kubectl run ngnix-treinamento --image nginx --replicas 5 # vou criar um deployment do nginx
 # kubectl get pods -o wide # para ver o pod criado
 # kubectl describe pod ngnix-treinamento # descreve o pod
 # kubectl scale deployment nginx-treinamento --replicas=3 # para escalar um deployment
+
+# ---
+- hosts:
+  - k8s-master
+  tasks:
+    - name: "Configura hostname k8s-master"
+      shell: hostname k8s-master && echo "k8s-master" > /etc/hostname
+      become: yes
+# ---
+
+# ---
+- hosts:
+  - k8s-worker-1
+  tasks:
+    - name: "Configura hostname k8s-worker-1"
+      shell: hostname k8s-worker-1 && echo "k8s-worker-1" > /etc/hostname
+      become: yes
+# ---
+
+# ---
+- hosts:
+  - k8s-worker-2
+  tasks:
+    - name: "Configura hostname k8s-worker-2"
+      shell: hostname k8s-worker-2 && echo "k8s-worker-2" > /etc/hostname
+      become: yes
+# ---
+
+# ---
+- hosts:
+  - k8s-worker-3
+  tasks:
+    - name: "Configura hostname k8s-worker-3"
+      shell: hostname k8s-worker-3 && echo "k8s-worker-3" > /etc/hostname
+      become: yes
+# ---
+
 
 - hosts: all
   tasks:
@@ -176,8 +213,8 @@
     # - name: Configure node ip
     #   become: true
     #   lineinfile:
-    #     path: /etc/default/kubelet
-    #     line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+    #      path: /etc/default/kubelet
+    #   line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
 
     - name: Restart kubelet
       become: true
