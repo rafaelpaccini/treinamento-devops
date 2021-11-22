@@ -56,9 +56,9 @@
     - name: Copia chave
       copy:
         src: "/home/ubuntu/aws/key01"
-        dest: "/home/ubuntu/aws/key01"
-        owner: ubuntu
-        group: ubuntu
+        dest: "/var/lib/jenkins/.ssh/key01"
+        owner: jenkins
+        group: jenkins
         mode: '0400'
 
     ## outra dorma reduzida de se fazer
